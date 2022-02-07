@@ -21,6 +21,11 @@ body {
 }
 
 /* Components  */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .btn {
   display: inline-block;
   border: none;
