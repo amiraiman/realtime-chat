@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: 1px solid #3a0ca3;
+}
+
 html {
   font-size: 62.5%;
 }
