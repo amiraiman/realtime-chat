@@ -26,6 +26,11 @@ body {
   margin: 0 auto;
 }
 
+.grid {
+  display: grid;
+  grid-gap: 1.8rem;
+}
+
 .btn {
   display: inline-block;
   border: none;
