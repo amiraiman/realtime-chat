@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 *:focus {
@@ -34,4 +35,5 @@ body {
   border: none;
   border-radius: 0.8rem;
   font-size: 1.8rem;
+  width: 100%;
 }
