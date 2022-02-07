@@ -29,6 +29,11 @@ body {
   font-size: 1.6rem;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #3f37c9;
+}
+
 .form-input {
   display: block;
   padding: 0.8rem 1.6rem;
