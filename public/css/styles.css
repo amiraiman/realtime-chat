@@ -27,11 +27,20 @@ body {
   border-radius: 0.8rem;
   padding: 0.8rem 1.6rem;
   font-size: 1.6rem;
+  transition: all 0.25s ease-in;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 .btn-primary {
   color: #fff;
   background-color: #4361ee;
+}
+
+.btn-primary:hover {
+  background-color: #3f37c9;
 }
 
 .form-input {
