@@ -70,7 +70,7 @@ ul {
 
 /* Specialized */
 .messages {
-  padding: 3.2rem 6.4rem;
+  padding: 3.2rem 1.2rem;
   margin-bottom: 3.2rem;
   display: flex;
   flex-direction: column;
