@@ -79,6 +79,17 @@ ul {
 .message {
   padding: 0.7rem;
   font-size: 1.8rem;
+  border-radius: 0.9rem;
+}
+
+.message.user-1 {
+  background-color: #adb5bd;
+  align-self: flex-start;
+}
+
+.message.user-2 {
+  background-color: #dee2e6;
+  align-self: flex-end;
 }
 
 .form-grid {
