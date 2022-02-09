@@ -80,6 +80,7 @@ ul {
   padding: 0.7rem;
   font-size: 1.8rem;
   border-radius: 0.9rem;
+  max-width: 70%;
 }
 
 .message.user-1 {
