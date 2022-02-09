@@ -77,6 +77,8 @@ ul {
   gap: 1.2rem;
   overflow-y: scroll;
   height: 90vh;
+  border: 1px solid #ced4da;
+  border-radius: 0.9rem;
 }
 
 .message {
