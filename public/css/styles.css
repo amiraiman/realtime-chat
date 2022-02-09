@@ -86,11 +86,13 @@ ul {
 .message.user-1 {
   background-color: #adb5bd;
   align-self: flex-start;
+  border-bottom-left-radius: 0;
 }
 
 .message.user-2 {
   background-color: #dee2e6;
   align-self: flex-end;
+  border-bottom-right-radius: 0;
 }
 
 .form-grid {
