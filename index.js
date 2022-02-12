@@ -18,8 +18,8 @@ io.on("connection", (socket) => {
     console.log("A user disconnected");
   });
 
-  socket.on("new chat", (data) => {
-    io.emit("new chat", data);
+  socket.on("new chat", async (data) => {
+    socket.broadcast.emit("new chat", data);
   });
 });
 
