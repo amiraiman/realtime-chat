@@ -28,11 +28,11 @@
         <!-- <li class="message user-2">Second message</li> -->
         <!-- <li class="message user-1">First message</li> -->
         <!-- <li class="message user-2">Second message</li> -->
-        <li class="message user-1">
+        <li class="message user-me">
           Dolor saepe non dicta quia facilis, corporis! Non illum asperiores
           modi obcaecati placeat. Hic accusantium.
         </li>
-        <li class="message user-2">
+        <li class="message user-them">
           Sit corrupti optio consectetur aperiam ipsa A veritatis voluptas nobis
           incidunt ipsum Magni sunt natus animi tenetur cupiditate Molestiae
           natus.
@@ -52,24 +52,30 @@
       <script>
         const socket = io();
         const form = document.querySelector("#form");
+        const input = document.querySelector("#textbox");
 
+        const createMessage = (userClass, msg) => {
+          const ul = document.querySelector(".messages");
+          const li = document.createElement("li");
+          li.textContent = msg;
+          li.classList.add("message");
+          li.classList.add(userClass);
+          ul.appendChild(li);
+          ul.scrollTop = ul.scrollHeight - ul.clientHeight;
+        };
+
+        // Append chat message and emit it to server
         form.addEventListener("submit", (e) => {
           e.preventDefault();
-          const input = document.querySelector("#textbox");
+          if (input.value.replaceAll(" ", "") === "") return;
+          createMessage("user-me", input.value);
           socket.emit("new chat", input.value);
           input.value = "";
         });
 
+        // Listen to incoming chat message
         socket.on("new chat", (data) => {
-          const ul = document.querySelector(".messages");
-          const li = document.createElement("li");
-
-          li.textContent = data;
-          li.classList.add("message");
-          li.classList.add("user-1");
-          ul.appendChild(li);
-
-          ul.scrollTop = ul.scrollHeight - ul.clientHeight;
+          createMessage("user-them", data);
         });
       </script>
     </div>
