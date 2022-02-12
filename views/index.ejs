@@ -8,26 +8,26 @@
   <body>
     <div class="container">
       <ul class="messages">
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
+        <!-- <li class="message user-1">First message</li> -->
+        <!-- <li class="message user-2">Second message</li> -->
         <li class="message user-1">
           Dolor saepe non dicta quia facilis, corporis! Non illum asperiores
           modi obcaecati placeat. Hic accusantium.
@@ -48,6 +48,30 @@
         />
         <input class="btn btn-primary" type="submit" value="Send" />
       </form>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        const socket = io();
+        const form = document.querySelector("#form");
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const input = document.querySelector("#textbox");
+          socket.emit("new chat", input.value);
+          input.value = "";
+        });
+
+        socket.on("new chat", (data) => {
+          const ul = document.querySelector(".messages");
+          const li = document.createElement("li");
+
+          li.textContent = data;
+          li.classList.add("message");
+          li.classList.add("user-1");
+          ul.appendChild(li);
+
+          ul.scrollTop = ul.scrollHeight - ul.clientHeight;
+        });
+      </script>
     </div>
   </body>
 </html>
