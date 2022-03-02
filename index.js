@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const server = http.createServer(app);
 
+const port = process.env.PORT || 3000;
+
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
@@ -13,4 +15,4 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-server.listen(8080);
+server.listen(port);
