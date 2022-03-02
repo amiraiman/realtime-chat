@@ -4,35 +4,36 @@
     <meta charset="UTF-8" />
     <title>Realtime Chat App</title>
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <div class="container">
       <ul class="messages">
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">First message</li>
-        <li class="message user-2">Second message</li>
-        <li class="message user-1">
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">First message</li>
+        <li class="message user-me">Second message</li>
+        <li class="message user-others">
           Dolor saepe non dicta quia facilis, corporis! Non illum asperiores
           modi obcaecati placeat. Hic accusantium.
         </li>
-        <li class="message user-2">
+        <li class="message user-me">
           Sit corrupti optio consectetur aperiam ipsa A veritatis voluptas nobis
           incidunt ipsum Magni sunt natus animi tenetur cupiditate Molestiae
           natus.
@@ -49,5 +50,25 @@
         <input class="btn btn-primary" type="submit" value="Send" />
       </form>
     </div>
+    <script>
+      const socket = io();
+
+      const createMessage = (text) => {
+        const messageBox = document.querySelector(".messages");
+        const li = document.createElement("li");
+        li.textContent = text;
+        li.classList.add("message");
+        li.classList.add("user-me");
+        messageBox.append(li);
+      };
+
+      const form = document.querySelector("#form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const msg = document.querySelector("#textbox").value;
+        createMessage(msg);
+        socket.emit("chat message");
+      });
+    </script>
   </body>
 </html>
