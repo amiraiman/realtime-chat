@@ -53,21 +53,30 @@
     <script>
       const socket = io();
 
-      const createMessage = (text) => {
+      const createMessage = (text, incoming = false) => {
         const messageBox = document.querySelector(".messages");
         const li = document.createElement("li");
         li.textContent = text;
         li.classList.add("message");
-        li.classList.add("user-me");
+        if (incoming) li.classList.add("user-others");
+        else li.classList.add("user-me");
         messageBox.append(li);
       };
 
       const form = document.querySelector("#form");
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const msg = document.querySelector("#textbox").value;
-        createMessage(msg);
-        socket.emit("chat message");
+        const msg = document.querySelector("#textbox");
+        if (msg.value) {
+          createMessage(msg.value);
+          socket.emit("outcoming message", msg.value);
+          msg.value = "";
+        }
+      });
+
+      socket.on("incoming message", (msg) => {
+        console.log(msg);
+        createMessage(msg, (incoming = true));
       });
     </script>
   </body>

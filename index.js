@@ -18,7 +18,9 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  socket.on("outcoming message", (msg) => {
+    socket.broadcast.emit("incoming message", msg);
+  });
 });
 
 server.listen(port);
