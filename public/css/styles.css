@@ -88,13 +88,13 @@ ul {
   max-width: 70%;
 }
 
-.message.user-1 {
+.message.user-others {
   background-color: #adb5bd;
   align-self: flex-start;
   border-bottom-left-radius: 0;
 }
 
-.message.user-2 {
+.message.user-me {
   background-color: #dee2e6;
   align-self: flex-end;
   border-bottom-right-radius: 0;
