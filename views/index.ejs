@@ -25,6 +25,11 @@
     <script>
       const socket = io();
 
+      const scrollMessageBox = () => {
+        const msgBox = document.querySelector(".messages");
+        msgBox.scrollTop = msgBox.scrollHeight - msgBox.scrollTop;
+      };
+
       const createMessage = (text, incoming = false) => {
         const messageBox = document.querySelector(".messages");
         const li = document.createElement("li");
@@ -33,6 +38,7 @@
         if (incoming) li.classList.add("user-others");
         else li.classList.add("user-me");
         messageBox.append(li);
+        scrollMessageBox();
       };
 
       const form = document.querySelector("#form");
@@ -47,7 +53,6 @@
       });
 
       socket.on("incoming message", (msg) => {
-        console.log(msg);
         createMessage(msg, (incoming = true));
       });
     </script>
